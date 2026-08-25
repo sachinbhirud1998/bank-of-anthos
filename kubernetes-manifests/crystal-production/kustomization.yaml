@@ -1,0 +1,40 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: bank-of-anthos
+
+resources:
+  - config.yaml
+  - rds-config.yaml
+  - balance-reader.yaml
+  - contacts.yaml
+  - frontend.yaml
+  - ledger-writer.yaml
+  - transaction-history.yaml
+  - userservice.yaml
+  - crystal-frontend-ingress.yaml
+
+images:
+  - name: us-central1-docker.pkg.dev/bank-of-anthos-ci/bank-of-anthos/frontend
+    newName: 746760141698.dkr.ecr.ap-south-1.amazonaws.com/crystal-production-bank-of-anthos-frontend
+    newTag: v0.6.10
+
+  - name: us-central1-docker.pkg.dev/bank-of-anthos-ci/bank-of-anthos/userservice
+    newName: 746760141698.dkr.ecr.ap-south-1.amazonaws.com/crystal-production-bank-of-anthos-userservice
+    newTag: v0.6.10
+
+  - name: us-central1-docker.pkg.dev/bank-of-anthos-ci/bank-of-anthos/contacts
+    newName: 746760141698.dkr.ecr.ap-south-1.amazonaws.com/crystal-production-bank-of-anthos-contacts
+    newTag: v0.6.10
+
+  - name: us-central1-docker.pkg.dev/bank-of-anthos-ci/bank-of-anthos/ledgerwriter
+    newName: 746760141698.dkr.ecr.ap-south-1.amazonaws.com/crystal-production-bank-of-anthos-ledgerwriter
+    newTag: v0.6.10
+
+  - name: us-central1-docker.pkg.dev/bank-of-anthos-ci/bank-of-anthos/balancereader
+    newName: 746760141698.dkr.ecr.ap-south-1.amazonaws.com/crystal-production-bank-of-anthos-balancereader
+    newTag: v0.6.10
+
+  - name: us-central1-docker.pkg.dev/bank-of-anthos-ci/bank-of-anthos/transactionhistory
+    newName: 746760141698.dkr.ecr.ap-south-1.amazonaws.com/crystal-production-bank-of-anthos-transactionhistory
+    newTag: v0.6.10
